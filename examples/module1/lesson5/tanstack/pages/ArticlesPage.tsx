@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { getArticles } from '../tools/getArticles';
-import ArticleCount from './ArticlesCount';
-import ArticlesLits from './ArticlesLits';
+import ArticleCount from '../components/ArticlesCount';
+import ArticlesLits from '../components/ArticlesLits';
+import Layout from '../components/Layout';
 
-const Articles = () => {
+const ArticlesPage = () => {
   const { error, isLoading } = useQuery({
     queryKey: ['articles'],
     queryFn: getArticles,
@@ -20,13 +21,15 @@ const Articles = () => {
     );
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <div className="container mx-auto px-4 py-8">
-        <ArticleCount />
-        <ArticlesLits />
+    <Layout>
+      <div className="min-h-screen bg-gray-100">
+        <div className="container mx-auto px-4 py-8">
+          <ArticleCount />
+          <ArticlesLits />
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 
-export default Articles;
+export default ArticlesPage;
