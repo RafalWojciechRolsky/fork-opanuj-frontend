@@ -29,7 +29,7 @@ const ArticlesLits = () => {
               <p className="text-gray-700 line-clamp-3">{article.content}</p>
             </div>
             <div className="px-6 py-4 bg-gray-100">
-              <Link to={`/${article.id}`}>
+              <Link to={`/article/${article.id}`}>
                 <button className="text-blue-500 hover:text-blue-700 font-semibold">
                   Read more
                 </button>

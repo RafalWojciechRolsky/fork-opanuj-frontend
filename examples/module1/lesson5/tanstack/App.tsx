@@ -3,6 +3,8 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import ArticlesPage from './pages/ArticlesPage';
 import ArticlePage from './pages/ArticlePage';
+import Layout from './components/Layout';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
   const queryClient = new QueryClient();
@@ -10,11 +12,18 @@ function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <ArticlesPage />,
-    },
-    {
-      path: '/:id',
-      element: <ArticlePage />,
+      element: <Layout />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          path: '/',
+          element: <ArticlesPage />,
+        },
+        {
+          path: '/article/:id',
+          element: <ArticlePage />,
+        },
+      ],
     },
   ]);
 

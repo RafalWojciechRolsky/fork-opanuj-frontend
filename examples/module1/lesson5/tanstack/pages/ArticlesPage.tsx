@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query';
 import { getArticles } from '../tools/getArticles';
 import ArticleCount from '../components/ArticlesCount';
 import ArticlesLits from '../components/ArticlesLits';
-import Layout from '../components/Layout';
 
 const ArticlesPage = () => {
   const { error, isLoading } = useQuery({
@@ -21,14 +20,12 @@ const ArticlesPage = () => {
     );
 
   return (
-    <Layout>
-      <div className="min-h-screen bg-gray-100">
-        <div className="container mx-auto px-4 py-8">
-          <ArticleCount />
-          <ArticlesLits />
-        </div>
+    <div className="min-h-screen bg-gray-100">
+      <div className="container mx-auto px-4 py-8">
+        <ArticleCount />
+        <ArticlesLits />
       </div>
-    </Layout>
+    </div>
   );
 };
 
