@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
+import ArticleCount from '../components/atoms/ArticlesCount';
+import ArticlesLits from '../components/molecules/ArticlesLits';
 import { getArticles } from '../tools/getArticles';
-import ArticleCount from '../components/ArticlesCount';
-import ArticlesLits from '../components/ArticlesLits';
 
 const ArticlesPage = () => {
   const { error, isLoading } = useQuery({

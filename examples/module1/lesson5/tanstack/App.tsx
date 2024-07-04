@@ -1,9 +1,10 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import ArticlesPage from './pages/ArticlesPage';
+import Layout from './components/organisms/Layout';
+import ArticleFormPage from './pages/ArticleFormPage';
 import ArticlePage from './pages/ArticlePage';
-import Layout from './components/Layout';
+import ArticlesPage from './pages/ArticlesPage';
 import ErrorPage from './pages/ErrorPage';
 
 function App() {
@@ -22,6 +23,10 @@ function App() {
         {
           path: '/article/:id',
           element: <ArticlePage />,
+        },
+        {
+          path: '/form',
+          element: <ArticleFormPage />,
         },
       ],
     },

@@ -10,6 +10,11 @@ const Layout = () => {
               Home
             </Link>
           </li>
+          <li>
+            <Link to="/form" className="text-blue-600 hover:text-blue-800">
+              Add Article
+            </Link>
+          </li>
         </ul>
       </nav>
       <main className="flex-grow container mx-auto px-4 py-8">

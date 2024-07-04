@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import { Article } from '../types';
-import { getArticles } from '../tools/getArticles';
 import { Link } from 'react-router-dom';
+import { getArticles } from '../../tools/getArticles';
+import { Article } from '../../types';
 
 const ArticlesLits = () => {
   const { data } = useQuery({

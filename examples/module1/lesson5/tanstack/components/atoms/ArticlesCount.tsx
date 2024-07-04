@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getArticles } from '../tools/getArticles';
+import { getArticles } from '../../tools/getArticles';
 
 const ArticleCount = () => {
   const { data } = useQuery({
