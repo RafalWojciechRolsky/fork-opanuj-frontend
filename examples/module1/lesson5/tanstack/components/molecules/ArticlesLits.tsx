@@ -1,14 +1,14 @@
-import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
-import { getArticles } from '../../tools/getArticles';
+import { getArticles } from '../../../../../module2/lesson3/zod-validation/articles/api/articlesClient';
+import { useGetAllArticles } from '../../toolsHooks/hooks/useGetAllArticles';
 import { Article } from '../../types';
 
 const ArticlesLits = () => {
-  const { data } = useQuery({
-    queryKey: ['articles'],
-    queryFn: getArticles,
-    staleTime: 10000,
-  });
+  const { data } = useGetAllArticles(getArticles);
+
+  if (!data) {
+    return <div>No Data...</div>;
+  }
 
   return (
     <>
@@ -19,7 +19,7 @@ const ArticlesLits = () => {
         {data.map((article: Article) => (
           <div
             key={article.id}
-            className="bg-white rounded-lg shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105"
+            className="bg-white rounded-lg shadow-md overflow-hidden transition duration-300 ease-in-out transform hover:scale-105 flex flex-col justify-between"
           >
             <div className="p-6">
               <h2 className="text-xl font-semibold mb-2 text-gray-800">

@@ -1,4 +1,4 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './components/organisms/Layout';
@@ -6,10 +6,9 @@ import ArticleFormPage from './pages/ArticleFormPage';
 import ArticlePage from './pages/ArticlePage';
 import ArticlesPage from './pages/ArticlesPage';
 import ErrorPage from './pages/ErrorPage';
+import { queryClient } from './toolsHooks/queryClient';
 
 function App() {
-  const queryClient = new QueryClient();
-
   const router = createBrowserRouter([
     {
       path: '/',

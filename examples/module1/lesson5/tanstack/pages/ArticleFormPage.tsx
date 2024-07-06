@@ -1,8 +1,8 @@
-import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import InputForm from '../components/atoms/InputForm';
-import { postArticle } from '../tools/postArticle';
+
+import { useAddArticle } from '../toolsHooks/hooks/useAddArticle';
 import { Article } from '../types';
 
 const initState: Article = {
@@ -15,12 +15,7 @@ const initState: Article = {
 const ArticleFormPage = () => {
   const [formData, setFormData] = useState<Article>(initState);
 
-  const { mutate } = useMutation({
-    mutationFn: postArticle,
-    onSuccess: () => {
-      console.log('Form submission successful');
-    },
-  });
+  const { mutate, isPending } = useAddArticle();
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -77,10 +72,11 @@ const ArticleFormPage = () => {
           />
         </div>
         <button
+          disabled={isPending}
           type="submit"
           className="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
-          Submit
+          {isPending ? 'Submitting...' : 'Submit'}
         </button>
       </form>
     </div>

@@ -1,7 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
-import { getArticles } from '../../tools/getArticles';
-import { Article as ArticleType } from '../../types';
+import { useGetArticle } from '../../toolsHooks/hooks/useGetArticle';
 
 const Article = () => {
   const { id } = useParams();
@@ -10,20 +8,7 @@ const Article = () => {
     return <div className="text-center py-10 text-xl text-red-600">no ID</div>;
   }
 
-  const {
-    data: article,
-    error,
-    isLoading,
-  } = useQuery({
-    queryKey: ['articles', id],
-    queryFn: async () => {
-      const articles = await getArticles();
-      return articles.find(
-        (article: ArticleType) => article.id.toString() === id.toString()
-      );
-    },
-    staleTime: 10000,
-  });
+  const { data: article, error, isLoading } = useGetArticle(id);
 
   if (isLoading)
     return <div className="text-center py-10 text-xl">Loading...</div>;

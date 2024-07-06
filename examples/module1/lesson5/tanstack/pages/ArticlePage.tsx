@@ -1,6 +1,6 @@
-import { useParams } from 'react-router-dom';
-import { getArticles } from '../tools/getArticles';
 import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router-dom';
+import { getArticles } from '../toolsHooks/apiTools/getArticles';
 import { Article as ArticleType } from '../types';
 
 const ArticlePage = () => {
