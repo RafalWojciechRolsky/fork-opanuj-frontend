@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 
-import { describe, test, expect } from 'vitest';
+import { describe, expect, test } from 'vitest';
 import { renderItems } from './renderer';
 
 const users: User[] = [
@@ -16,6 +16,11 @@ describe('User renderer', () => {
     const container = document.createElement('div');
     renderItems(container, users);
     expect(Array.from(container.querySelectorAll('li'))).toHaveLength(3);
+
+    const listItems = Array.from(container.querySelectorAll('li'));
+    expect(listItems[0].textContent).toContain('John');
+    expect(listItems[1].textContent).toContain('Jane');
+    expect(listItems[2].textContent).toContain('Jack');
   });
 
   test('should render only regular users if non-admin is rendering the list', () => {
@@ -24,5 +29,9 @@ describe('User renderer', () => {
     const container = document.createElement('div');
     renderItems(container, users);
     expect(Array.from(container.querySelectorAll('li'))).toHaveLength(2);
+
+    const listItems = Array.from(container.querySelectorAll('li'));
+    expect(listItems[0].textContent).toContain('John');
+    expect(listItems[1].textContent).toContain('Jack');
   });
 });
